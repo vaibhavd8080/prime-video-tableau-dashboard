@@ -15,14 +15,6 @@ The project includes a cleaned dataset, a Python data-cleaning notebook, an inte
 
 ![Amazon Prime Video Dashboard](dashboard/dashboard_preview.png)
 
-## Questions I Wanted to Answer
-
-1. What is the catalogue made of, and how many movies and TV shows are included?
-2. Which genres and production countries are most represented?
-3. How has the number of releases changed over the years?
-4. Which actors and directors are credited on the most titles?
-5. What is the average IMDb score of titles in the catalogue?
-
 
 ## Key Findings
 
