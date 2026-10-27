@@ -23,6 +23,7 @@ The project includes a cleaned dataset, a Python data-cleaning notebook, an inte
 4. Which actors and directors are credited on the most titles?
 5. What is the average IMDb score of titles in the catalogue?
 
+
 ## Key Findings
 
 - The cleaned catalogue contains **9,868 titles**.
@@ -32,6 +33,9 @@ The project includes a cleaned dataset, a Python data-cleaning notebook, an inte
 - The number of releases increases in more recent years. The peak year should be confirmed from the dashboard.
 - Production is concentrated in several countries. The leading country should be confirmed from the dashboard.
 - Joseph Kane, Sam Newfield, and Jay Chapman are among the directors with the most titles in this analysis.
+
+\*\*Live Dashboard:\*\*  \
+ bb1761dce246a2f63f69014a7c5bd8b65a6b6626
 
 *Note: These findings describe the dataset used in this project and do not necessarily represent the current Amazon Prime Video catalogue.*
 
