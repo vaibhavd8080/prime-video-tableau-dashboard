@@ -1,20 +1,19 @@
 # Amazon Prime Video Catalogue Dashboard
 
-An interactive data visualization project exploring the Amazon Prime Video catalogue using **Tableau, Python, Pandas, and Excel**.
+## Project Overview
+
+This project explores the Amazon Prime Video catalogue using Python for data cleaning and Tableau for data visualization. The goal is to understand the catalogue's content distribution, genres, countries, release trends, ratings, and credits.
+
+The project includes a cleaned dataset, a Python data-cleaning notebook, an interactive Tableau dashboard, and a dashboard preview.
+
+## Live Tableau Dashboard
+
+**Explore the interactive dashboard:**  
+[View Amazon Prime Video Dashboard on Tableau Public](https://public.tableau.com/app/profile/vaibhav.deshmukh3072/viz/Amazon_Prime_Video_DashboardTablaeu/Dashboard1?publish=yes)
 
 ## Dashboard Preview
 
 ![Amazon Prime Video Dashboard](dashboard/dashboard_preview.png)
-
-**Live Interactive Dashboard:** [View on Tableau Public](https://public.tableau.com/app/profile/vaibhav.deshmukh3072/viz/Amazon_Prime_Video_DashboardTablaeu/Dashboard1?publish=yes)
-
----
-
-## Project Overview
-
-This project explores the Amazon Prime Video catalogue through data cleaning, exploratory analysis, data modelling, and interactive dashboard development.
-
-The dashboard analyses movies and TV shows, genres, production countries, release trends, actors, directors, and IMDb ratings.
 
 ## Questions I Wanted to Answer
 
@@ -51,104 +50,90 @@ The cleaned Excel workbook is `data/amazon_prime_clean.xlsx` and contains four w
 
 I used **Python, Pandas, and Google Colab** to clean and prepare the data for analysis. The notebook is available in the `notebooks` folder.
 
-- Removed duplicate records from titles and credits data.
-- Reviewed missing values and handled missing age certifications by assigning `Not Rated`.
-- Separated multi-value genre and country fields into individual records.
-- Created additional analysis fields, including release decade, runtime band, rating gap, and IMDb rating band.
-- Checked title identifiers to support accurate counting and relationships in Tableau.
+The cleaning and preparation workflow includes:
 
-The cleaned tables were saved in `data/amazon_prime_clean.xlsx`.
+- Inspecting the dataset and its columns.
+- Handling missing and inconsistent values where appropriate.
+- Preparing title, genre, country, and credit information for analysis.
+- Organizing the cleaned data into worksheets for use in Tableau.
+- Exporting the prepared data to an Excel workbook.
 
-## Data Model in Tableau
+The original cleaning workflow is documented in `notebooks/Amazon_Prime_Video_Data_Cleaning.ipynb`.
 
-The `titles_clean` table serves as the main table. The genre, country, and credits tables are related to it using the title `Id`.
+## Tableau Data Model
 
-Using relationships and distinct counts of `Id` helps avoid counting the same title multiple times when it has multiple genres, countries, or credited people.
+The cleaned workbook contains separate worksheets for titles, genres, countries, and credits. These tables support analysis of content types, genre distribution, production countries, ratings, and people associated with titles.
+
+When connecting the worksheets in Tableau, the relationships should be based on the appropriate title identifiers. Care should be taken to avoid duplicate counts when a title has multiple genres, countries, actors, or directors.
 
 ## Dashboard Features
 
-| Dashboard Section | What It Shows | Visualization |
-|---|---|---|
-| KPI cards | Total titles, movies, TV shows, and average IMDb score | KPI cards |
-| Top 10 genres | Most represented genres by title count | Horizontal bar chart |
-| Movies vs. TV shows | Distribution of content types | Pie chart |
-| Production countries | Geographic distribution of titles | Filled map |
-| Titles released by year | Release trends over time, split by content type | Area chart |
-| Top 10 actors | Actors credited on the most titles | Horizontal bar chart |
-| Top 10 directors | Directors credited on the most titles | Horizontal bar chart |
+The dashboard is designed to help users explore the catalogue through visual summaries and comparisons.
 
-### Filters and Calculated Fields
+| Analysis Area | Purpose |
+|---|---|
+| Content distribution | Compare movies and TV shows |
+| Genre analysis | Identify the most represented genres |
+| Country analysis | Explore production-country distribution |
+| Release trends | Examine how releases vary by year |
+| Ratings | Explore available IMDb ratings |
+| Credits | Analyze actors and directors associated with titles |
 
-The dashboard includes a content-type filter and a release-year range filter.
+*The exact visuals and interactive controls are available in the published Tableau dashboard.*
 
-The Movies and TV Shows KPI cards use their own fixed content-type filters so that each displays its respective total independently of the shared content-type filter.
+## Tools and Technologies
 
-The Actor Rank and Director Rank calculated fields help identify leading people by distinct title count, with the role separated for each chart.
-
-## Problems Encountered and Solutions
-
-| Problem | Cause | Approach |
-|---|---|---|
-| The top directors chart showed too few directors | A Top N filter was applied before separating credit roles | Used a rank calculation for the director chart |
-| The Movies and TV Shows cards displayed the same total | The dashboard-wide type filter affected both KPI cards | Gave each KPI card its own fixed content-type filter |
-| Title counts were too high | Multiple genres, countries, and credits can repeat title records | Used relationships and distinct counts of title `Id` |
-
-## Limitations
-
-- The analysis measures catalogue titles, not actual viewing behaviour.
-- Results depend on the dataset and its coverage.
-- IMDb scores indicate audience ratings, not a definitive measure of content quality.
-- The catalogue may change over time, so the results should not be interpreted as a live inventory.
+- **Python** — data preparation and cleaning
+- **Pandas** — data manipulation
+- **Jupyter Notebook / Google Colab** — documenting the cleaning workflow
+- **Microsoft Excel** — storing the cleaned worksheets
+- **Tableau** — data visualization and interactive dashboard creation
+- **Git and GitHub** — version control and project portfolio hosting
 
 ## Repository Structure
 
 ```text
 prime-video-tableau-dashboard/
-├── README.md
-├── .gitignore
+│
 ├── dashboard/
 │   ├── Amazon_Prime_Video_Dashboard.twbx
 │   └── dashboard_preview.png
+│
+├── data/
+│   └── amazon_prime_clean.xlsx
+│
 ├── notebooks/
 │   └── Amazon_Prime_Video_Data_Cleaning.ipynb
-└── data/
-    └── amazon_prime_clean.xlsx
+│
+├── .gitignore
+└── README.md
 ```
 
-## How to Explore the Project
+## Challenges and Learnings
 
-1. View the dashboard preview at `dashboard/dashboard_preview.png`.
-2. Open `dashboard/Amazon_Prime_Video_Dashboard.twbx` in Tableau Desktop or Tableau Public.
-3. Review the data-cleaning workflow in `notebooks/Amazon_Prime_Video_Data_Cleaning.ipynb`.
-4. Explore the prepared tables in `data/amazon_prime_clean.xlsx`.
+Through this project, I practiced:
 
-## Tools and Technologies
+- Cleaning and preparing real-world catalogue data.
+- Working with multiple related datasets.
+- Building visualizations for exploratory data analysis.
+- Designing an interactive dashboard in Tableau.
+- Communicating findings through data storytelling.
+- Organizing a data analytics project for a GitHub portfolio.
 
-- Python
-- Pandas
-- Google Colab
-- Microsoft Excel
-- Tableau
-- Git and GitHub
+## Limitations
 
-## Skills Demonstrated
-
-- Data cleaning and preprocessing
-- Exploratory data analysis
-- Data modelling and relationships
-- Calculated fields and ranking
-- Interactive dashboard design
-- Data visualization
-- Analytical storytelling
-- Project documentation
+- Findings depend on the dataset used in this project and may not represent the current catalogue.
+- Missing values and data quality issues may affect some analyses.
+- Genre, country, and credit relationships can create duplicate counts if not modeled correctly.
+- Some observations, such as the peak release year and leading production country, should be verified directly against the dashboard.
 
 ## Author
 
 **Vaibhav Deshmukh**
 
-- **GitHub:** [vaibhavd8080](https://github.com/vaibhavd8080)
-- **Email:** [vaibhavd8080@gmail.com](mailto:vaibhavd8080@gmail.com)
+- GitHub: [vaibhavd8080](https://github.com/vaibhavd8080)
+- Tableau Public: [View my Tableau profile](https://public.tableau.com/app/profile/vaibhav.deshmukh3072)
 
 ---
 
-*Created as a data analytics and visualization portfolio project.*
+If you find this project useful, feel free to explore the dashboard and the project files.
