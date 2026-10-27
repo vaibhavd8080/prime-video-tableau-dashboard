@@ -10,8 +10,7 @@ I built this Tableau project to explore the Amazon Prime Video catalogue. I clea
 
 
 
-\*\*Live Dashboard:\*\*  \[https://public.tableau.com/app/profile/vaibhav.deshmukh3072/viz/Amazon\_Prime\_Video\_DashboardTablaeu/Dashboard1?publish=yes\&utm\_source=chatgpt.com](https://public.tableau.com/app/profile/vaibhav.deshmukh3072/viz/Amazon\_Prime\_Video\_DashboardTablaeu/Dashboard1?publish=yes\\\&utm\_source=chatgpt.com)
-
+\*\*Live Dashboard:\*\*  \
 
 
 \---
