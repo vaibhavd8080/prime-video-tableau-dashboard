@@ -1,135 +1,87 @@
-# Amazon Prime Video Catalogue Dashboard
+# Amazon Prime Video Catalogue Dashboard — Tableau
 
-## Project Overview
+An interactive Tableau dashboard built from an Amazon Prime Video catalogue dataset. Python and Pandas were used to prepare the data; Tableau was used to explore catalogue composition and related attributes.
 
-This project explores the Amazon Prime Video catalogue using Python for data cleaning and Tableau for data visualization. The goal is to understand the catalogue's content distribution, genres, countries, release trends, ratings, and credits.
+## Live dashboard
 
-The project includes a cleaned dataset, a Python data-cleaning notebook, an interactive Tableau dashboard, and a dashboard preview.
+[Open the Amazon Prime Video dashboard on Tableau Public](https://public.tableau.com/app/profile/vaibhav.deshmukh3072/viz/Amazon_Prime_Video_DashboardTablaeu/Dashboard1?publish=yes)
 
-## Live Tableau Dashboard
+## Dashboard preview
 
-**Explore the interactive dashboard:**  
-[View Amazon Prime Video Dashboard on Tableau Public](https://public.tableau.com/app/profile/vaibhav.deshmukh3072/viz/Amazon_Prime_Video_DashboardTablaeu/Dashboard1?publish=yes)
+![Amazon Prime Video Tableau dashboard](dashboard/dashboard_preview.png)
 
-## Dashboard Preview
+## Project questions
 
-![Amazon Prime Video Dashboard](dashboard/dashboard_preview.png)
+The dashboard is intended to explore:
 
+- How many movies and TV shows are represented in the dataset?
+- How is the catalogue distributed across genres and production countries?
+- How do title counts vary by release year?
+- What IMDb rating information is available?
+- Which actors and directors appear in the credits data?
 
-## Key Findings
+## Verified data preparation results
 
-- The cleaned catalogue contains **9,868 titles**.
-- It includes **8,511 movies (approximately 86.3%)** and **1,357 TV shows (approximately 13.7%)**.
-- Drama is the leading genre, followed by Comedy, Thriller, Action, and Romance.
-- The average IMDb score is approximately **5.98 out of 10**.
-- The number of releases increases in more recent years. The peak year should be confirmed from the dashboard.
-- Production is concentrated in several countries. The leading country should be confirmed from the dashboard.
-- Joseph Kane, Sam Newfield, and Jay Chapman are among the directors with the most titles in this analysis.
+The committed cleaning notebook records these results:
 
-\*\*Live Dashboard:\*\*  \
- bb1761dce246a2f63f69014a7c5bd8b65a6b6626
+| Check | Before cleaning | After duplicate removal |
+|---|---:|---:|
+| Title records | 9,871 | 9,868 |
+| Credit records | 124,235 | 124,179 |
 
-*Note: These findings describe the dataset used in this project and do not necessarily represent the current Amazon Prime Video catalogue.*
+The notebook reports that three duplicate rows were removed from the titles table and 56 duplicate rows from the credits table. These are data-preparation counts, not measures of the current Amazon Prime Video catalogue.
 
-## Dataset
+The notebook is available at [Amazon_Prime_Video_Data_Cleaning.ipynb](notebooks/Amazon_Prime_Video_Data_Cleaning.ipynb).
 
-The cleaned Excel workbook is `data/amazon_prime_clean.xlsx` and contains four worksheets:
+## Project files
 
-| Worksheet | Description |
+- [Tableau packaged workbook (.twbx)](dashboard/Amazon_Prime_Video_Dashboard.twbx)
+- [Cleaned Excel workbook](data/amazon_prime_clean.xlsx)
+- [Python data-cleaning notebook](notebooks/Amazon_Prime_Video_Data_Cleaning.ipynb)
+- [Dashboard preview image](dashboard/dashboard_preview.png)
+
+## Data model
+
+The cleaned Excel workbook contains these worksheets:
+
+| Worksheet | Purpose |
 |---|---|
-| `titles_clean` | Title-level information, including content type, release year, runtime, certification, and ratings |
-| `title_genres` | Title-to-genre associations |
-| `title_countries` | Title-to-country associations |
-| `credits_clean` | Actors, directors, and other available credit information |
+| \`titles_clean\` | Title-level attributes |
+| \`title_genres\` | Title-to-genre associations |
+| \`title_countries\` | Title-to-country associations |
+| \`credits_clean\` | Actor and director credit information |
 
-## Data Cleaning and Preparation
+When analysing these tables, use the title identifier to relate records. A title can have multiple genres, countries or credits, so joining tables without considering their grain can multiply title rows and inflate counts.
 
-I used **Python, Pandas, and Google Colab** to clean and prepare the data for analysis. The notebook is available in the `notebooks` folder.
+## Preparation workflow
 
-The cleaning and preparation workflow includes:
+The committed notebook documents the following steps:
 
-- Inspecting the dataset and its columns.
-- Handling missing and inconsistent values where appropriate.
-- Preparing title, genre, country, and credit information for analysis.
-- Organizing the cleaned data into worksheets for use in Tableau.
-- Exporting the prepared data to an Excel workbook.
+1. Load the titles and credits CSV files.
+2. Inspect table dimensions and duplicate records.
+3. Remove exact duplicate rows.
+4. Prepare title, genre, country and credit data for analysis.
+5. Export the prepared tables for use in Tableau.
 
-The original cleaning workflow is documented in `notebooks/Amazon_Prime_Video_Data_Cleaning.ipynb`.
+The notebook uses Google Colab-style input paths. To rerun it outside the original Colab session, update the input and output paths to match the local folder structure.
 
-## Tableau Data Model
+## Tools
 
-The cleaned workbook contains separate worksheets for titles, genres, countries, and credits. These tables support analysis of content types, genre distribution, production countries, ratings, and people associated with titles.
-
-When connecting the worksheets in Tableau, the relationships should be based on the appropriate title identifiers. Care should be taken to avoid duplicate counts when a title has multiple genres, countries, actors, or directors.
-
-## Dashboard Features
-
-The dashboard is designed to help users explore the catalogue through visual summaries and comparisons.
-
-| Analysis Area | Purpose |
-|---|---|
-| Content distribution | Compare movies and TV shows |
-| Genre analysis | Identify the most represented genres |
-| Country analysis | Explore production-country distribution |
-| Release trends | Examine how releases vary by year |
-| Ratings | Explore available IMDb ratings |
-| Credits | Analyze actors and directors associated with titles |
-
-*The exact visuals and interactive controls are available in the published Tableau dashboard.*
-
-## Tools and Technologies
-
-- **Python** — data preparation and cleaning
-- **Pandas** — data manipulation
-- **Jupyter Notebook / Google Colab** — documenting the cleaning workflow
-- **Microsoft Excel** — storing the cleaned worksheets
-- **Tableau** — data visualization and interactive dashboard creation
-- **Git and GitHub** — version control and project portfolio hosting
-
-## Repository Structure
-
-```text
-prime-video-tableau-dashboard/
-│
-├── dashboard/
-│   ├── Amazon_Prime_Video_Dashboard.twbx
-│   └── dashboard_preview.png
-│
-├── data/
-│   └── amazon_prime_clean.xlsx
-│
-├── notebooks/
-│   └── Amazon_Prime_Video_Data_Cleaning.ipynb
-│
-├── .gitignore
-└── README.md
-```
-
-## Challenges and Learnings
-
-Through this project, I practiced:
-
-- Cleaning and preparing real-world catalogue data.
-- Working with multiple related datasets.
-- Building visualizations for exploratory data analysis.
-- Designing an interactive dashboard in Tableau.
-- Communicating findings through data storytelling.
-- Organizing a data analytics project for a GitHub portfolio.
+- Python and Pandas
+- NumPy
+- Google Colab / Jupyter Notebook
+- Microsoft Excel
+- Tableau
+- Git and GitHub
 
 ## Limitations
 
-- Findings depend on the dataset used in this project and may not represent the current catalogue.
-- Missing values and data quality issues may affect some analyses.
-- Genre, country, and credit relationships can create duplicate counts if not modeled correctly.
-- Some observations, such as the peak release year and leading production country, should be verified directly against the dashboard.
+- This is a historical dataset analysis, not a live feed of the current Prime Video catalogue.
+- The committed notebook documents duplicate removal and data preparation; missing values and source-data quality can still affect individual views.
+- Genre, country and credits tables have one-to-many relationships with titles. Counts should be based on distinct title identifiers where appropriate.
+- The Tableau Public URL is provided for convenience; the packaged workbook and preview are also included in this repository.
 
 ## Author
 
-**Vaibhav Deshmukh**
-
-- GitHub: [vaibhavd8080](https://github.com/vaibhavd8080)
-- Tableau Public: [View my Tableau profile](https://public.tableau.com/app/profile/vaibhav.deshmukh3072)
-
----
-
-If you find this project useful, feel free to explore the dashboard and the project files.
+**Vaibhav Deshmukh**  
+[GitHub profile](https://github.com/vaibhavd8080) · [Tableau Public profile](https://public.tableau.com/app/profile/vaibhav.deshmukh3072)
